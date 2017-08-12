@@ -26,6 +26,7 @@ class App extends Component {
     this.setSearchTopstories = this.setSearchTopstories.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
   }
 
   setSearchTopstories(result) {
@@ -37,6 +38,12 @@ class App extends Component {
       .then(response => response.json())
       .then(result => this.setSearchTopstories(result))
       .catch(e => e);
+  }
+
+  onSearchSubmit(event) {
+    const { searchTerm } = this.state;
+    this.fetchSearchTopstories(searchTerm);
+    event.preventDefault();
   }
 
   componentDidMount() {
@@ -58,36 +65,39 @@ class App extends Component {
 
   render() {
     const { searchTerm, result } = this.state;
-
-    if (!result) { return null; }
-
     return (
       <div className="page">
         <div className="interactions">
           <Search 
             value={searchTerm}
             onChange={this.onSearchChange}
+            onSubmit={this.onSearchSubmit}
           >
             Search
           </Search>
         </div>
-        <Table 
-          list={result.hits}
-          pattern={searchTerm}
-          onDismiss={this.onDismiss}
-        />
+        { result
+          ? <Table 
+            list={result.hits}
+            onDismiss={this.onDismiss}
+          />
+          : null
+        }
       </div>
     );
   }
 }
 
-const Search = ({ value, onChange, children }) =>
-  <form>
-    {children} <input
+const Search = ({ value, onChange, onSubmit, children }) =>
+  <form onSubmit={onSubmit}>
+    <input
       type="text"
       value={value}
       onChange={onChange}
     />
+    <button type="submit">
+      {children}
+    </button>
   </form>
 
 // styles
@@ -104,9 +114,9 @@ const Search = ({ value, onChange, children }) =>
   }
 // end styles
 
-const Table = ({list, pattern, onDismiss}) =>
+const Table = ({list, onDismiss}) =>
   <div className="table">
-    { list.filter(isSearched(pattern)).map(item =>
+    { list.map(item =>
       <div key={item.objectID} className="table-row">
         <span style={largeColumn}>
           <a href={item.url}>{item.title}</a>
