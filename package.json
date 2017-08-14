@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jest-cli": "^20.0.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "jest": "^20.0.4",
+    "react-scripts": "1.0.10",
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
