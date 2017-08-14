@@ -19,38 +19,45 @@ describe('App', () => {
 });
 
 describe('Search', () => {
-  const mockOnChange = () => {} 
-  const mockonSubmit = () => {}
-
+  const props = {
+    onChange: () => {},
+    onSubmit: () => {},
+  }
   it('renders', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <Search 
-        onChange={ mockOnChange }
-        onSubmit={ mockonSubmit }
-        >
+      <Search {...props}>
       Search
       </Search>, div);
   });
 
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  test('snapshots', () => {
+    const component = renderer.create(
+      <Search>Search</Search>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  })
 });
 
 describe('Button', () => {
-  const mockOnClick = () => {}
+  const props = {
+    onClick: undefined,
+    className: ''
+  }
+
 
   it('renders', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <Button onClick={ mockOnClick }>
+      <Button {...props}>
         Give Me More
       </Button>, div);
   })
 
   test('snapshots', () => {
     const component = renderer.create(
-      <Button onClick={ mockOnClick }>
+      <Button {...props}>
         Give Me More
       </Button>
     );
@@ -59,3 +66,26 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   })
 })
+
+describe('Table', () => {
+  const props = {
+    list: [
+      { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y'},
+      { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z'},
+    ],
+    onDismiss: () => {}
+  };
+
+  it('renders', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Table {...props} />, div);
+  });
+
+  test('snapshots', () => {
+    const component = renderer.create(
+      <Table { ...props } />
+    )
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

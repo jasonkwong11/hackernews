@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
 import './App.css';
 
 const DEFAULT_QUERY = 'redux';
