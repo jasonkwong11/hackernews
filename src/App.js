@@ -60,7 +60,7 @@ class App extends Component {
 
   fetchSearchTopstories(searchTerm, page) {
     this.setState({ isLoading: true });
-    
+
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(response => response.json())
       .then(result => this.setSearchTopstories(result))
@@ -138,13 +138,11 @@ class App extends Component {
             onDismiss={this.onDismiss}
         />
         <div className="interactions">
-          { isLoading
-            ? <Loading />
-            : <Button 
-                onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
-                More
-              </Button>
-          }
+          <ButtonWithLoading
+              isLoading={isLoading}
+              onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
+              More
+          </ButtonWithLoading>
         </div>
       </div>
     );
@@ -153,6 +151,9 @@ class App extends Component {
 
 const Loading = () =>
   <div>Loading...</div>
+
+const withLoading = (Component) => ({ isLoading, ...rest }) =>
+  isLoading ? <Loading /> : <Component { ...rest } />
 
 const Search = ({ value, onChange, onSubmit, children }) =>
   <form onSubmit={onSubmit}>
@@ -241,6 +242,8 @@ const Button = ({onClick, className, children}) =>
 Button.defaultProps = {
   className: '',
 }
+
+const ButtonWithLoading = withLoading(Button);
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
