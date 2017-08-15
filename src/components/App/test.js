@@ -9,7 +9,7 @@ describe('App', () => {
   const props = {
     results: null,
     searchKey: '',
-    searchTerm: 'redux',
+    searchTerm: 'rails',
     isLoading: true,
   };
 

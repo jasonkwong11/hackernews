@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './index.css';
-
 import {
   DEFAULT_QUERY,
   DEFAULT_PAGE,
@@ -16,6 +15,7 @@ import {
 import Table from '../Table';
 import ButtonWithLoading from '../Button';
 import Search from '../Search';
+import Header from '../Header'
 
 const updateSearchTopStoriesState = (hits, page) => (prevState) => {
   const { searchKey, results } = prevState;
@@ -137,6 +137,7 @@ class App extends Component {
     return (
       <div className="page">
         <div className="interactions">
+          <Header />
           <Search 
             value={searchTerm}
             onChange={this.onSearchChange}

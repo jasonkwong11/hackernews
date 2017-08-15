@@ -1,6 +1,6 @@
 import { sortBy } from 'lodash';
 
-export const DEFAULT_QUERY = 'redux';
+export const DEFAULT_QUERY = 'rails';
 export const DEFAULT_PAGE = 0;
 export const DEFAULT_HPP = '100';
 
