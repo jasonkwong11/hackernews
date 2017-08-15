@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button snapshots 1`] = `
-<button
-  className=""
-  onClick={undefined}
-  type="button"
->
-  Give Me More
-</button>
-`;
-
-exports[`Loading snapshots 1`] = `[Function]`;
-
-exports[`Search snapshots 1`] = `
-<form
-  onSubmit={undefined}
->
-  <input
-    onChange={undefined}
-    type="text"
-    value={undefined}
-  />
-  <button
-    type="submit"
-  >
-    Search
-  </button>
-</form>
-`;
-
 exports[`Table snapshots 1`] = `
 <div
   className="table"
