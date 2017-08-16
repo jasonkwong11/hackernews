@@ -6,6 +6,8 @@ To run this simply clone or fork it, run `npm install`, `npm start`, then naviga
 
 ## Usage
 
+[Check out the production build here](https://search-hackernews.herokuapp.com/)
+
 Search Hacker News for any topic. The default search is set to 'rails'.
 
 Run tests with by running `npm test`
