@@ -11,7 +11,6 @@ cache:
 script:
   - npm run test
 before_deploy:
-  - npm run global add travis-ci-cloudfront-invalidation
   - npm run build
 deploy:
   provider: s3
