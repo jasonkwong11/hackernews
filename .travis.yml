@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "10.7.0"
+install:
+  - npm install -g travis-ci-cloudfront-invalidation
+  - npm install
 cache:
   node: true
   directories:
