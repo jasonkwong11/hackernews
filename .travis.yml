@@ -8,15 +8,13 @@ cache:
   node: true
   directories:
     - node_modules
-before_deploy:
-  - npm run build
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $S3_BUCKET
   skip_cleanup: true
-  local-dir: build
+  local-dir: '/'
   on:
     branch: master
 after_deploy:

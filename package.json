@@ -7,8 +7,8 @@
     "forbid": "*.json"
   },
   "scripts": {
-    "start": "ws",
-    "test": "node scripts/test.js --env=jsdom"
+    "start": "npm run start",
+    "deploy": "aws s3 sync s3://xboxcure.com"
   },
   "author": "Jason Kwong",
   "license": "BSD-2-Clause",
