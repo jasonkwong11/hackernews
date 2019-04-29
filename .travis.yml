@@ -8,8 +8,6 @@ cache:
   node: true
   directories:
     - node_modules
-script:
-  - npm run test
 before_deploy:
   - npm run build
 deploy:
